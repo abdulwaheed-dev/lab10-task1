@@ -32,9 +32,7 @@ function ShoppingCart(props){
                         <th>
                             Quantity
                         </th>
-                        <th>
-                            
-                        </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,11 +40,13 @@ function ShoppingCart(props){
                         <tr key={index}>
                             <td>{itm.name}</td>
                             <td>${itm.price}</td>
-                            <td>Quantity: {itm.quantity}</td>
                             <td>
-                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity - 1)}} className="ui yellow button">-</button>
-                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity + 1)}} className="ui green button">+</button>
-                                <button onClick={()=>{removeItem(itm.id)}} className="ui red button">Remove</button>
+                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity - 1)}} className="ui yellow button" style={{marginRight:'5px'}} >-</button>
+                                {itm.quantity}
+                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity + 1)}} className="ui green button" style={{marginLeft:'5px'}}>+</button>
+                            </td>
+                            <td>
+                                <button onClick={()=>{removeItem(itm.id)}} className="ui red button">Remove Item</button>
                             </td>
                         </tr>
                     ))}
@@ -55,6 +55,7 @@ function ShoppingCart(props){
             <div>
                 <h1>Grand Total: $ {cartTotal}/-</h1>
                 <button onClick={()=>{emptyCart()}} className="ui red button">Clear Cart</button>
+                <button className="ui blue button">Proceed to Checkout</button>
             </div>
         </div>
     )
