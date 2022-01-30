@@ -1,0 +1,62 @@
+import React from "react";
+import { useState } from "react";
+import {useCart} from "react-use-cart";
+
+function ShoppingCart(props){
+    const {
+        isEmpty,
+        totalUniqueItems,
+        items,
+        totalItems,
+        cartTotal,
+        updateItemQuantity,
+        removeItem,
+        emptyCart
+    } = useCart();
+
+    if(isEmpty) return <h1>Your Cart is Empty</h1>
+
+    return(
+        <div>
+            <h1>Shopping Cart</h1>
+            <p>(Total Unique Items: {totalUniqueItems} , Total Items: {totalItems})</p>
+            <table className="ui single line table">
+                <thead>
+                    <tr>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items.map((itm,index)=>(
+                        <tr key={index}>
+                            <td>{itm.name}</td>
+                            <td>${itm.price}</td>
+                            <td>Quantity: {itm.quantity}</td>
+                            <td>
+                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity - 1)}} className="ui yellow button">-</button>
+                                <button onClick={()=>{updateItemQuantity(itm.id,itm.quantity + 1)}} className="ui green button">+</button>
+                                <button onClick={()=>{removeItem(itm.id)}} className="ui red button">Remove</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <div>
+                <h1>Grand Total: $ {cartTotal}/-</h1>
+                <button onClick={()=>{emptyCart()}} className="ui red button">Clear Cart</button>
+            </div>
+        </div>
+    )
+}
+export default ShoppingCart;

@@ -1,20 +1,21 @@
-import MockData from '../data/MOCK_DATA.json';
+import React from 'react';
+import {useCart} from "react-use-cart";
 
-function Product(){
-    return(<div className='ui four column grid'>
-        <div className='row'>    
-        {MockData.map(itm=>(
-            <div class="column">
-            <div className="ui card" style={{width:'270px',height:'100px',marginTop:'10px', marginLeft:'10px'}}>
+function Product(props){
+
+    const {addItem} = useCart();
+
+    return( 
+            <div className="column">    
+            <div className="ui card" style={{height:'140px',marginTop:'10px', marginLeft:'10px'}}>
                 <div className="content">
-                    <div className="header">{itm.id} - {itm.name} </div>
-                    <div className="meta">Quantity: {itm.qty}</div>
-                    <div className="header">Price: {itm.price} </div>
+                    <div className="header">{props.id} - {props.name} </div>
+                    <div className="meta">Quantity: {props.qty}</div>
+                    <div className="header">Price: ${props.price} </div>
+                    <button onClick={()=>addItem(props.item)} className="ui button">Add to Cart</button>
                 </div>
             </div>
-            </div>  
-        ))}
-        </div>
-    </div>)
+            </div>
+        )
 }
 export default Product;
