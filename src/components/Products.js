@@ -6,9 +6,8 @@ function Products(){
 
     const [MockItem,setMockItem] = useState(MockData);
 
-    return(<div className='ui four column grid'>
+    return(<div className='ui three column grid'>
         <h1>Products</h1>
-        <label className='ui label'>Cart <i className="shop icon"/> </label>
         <div className='row'>
         {MockItem.map((item,index)=>(
             <Product 
@@ -21,6 +20,7 @@ function Products(){
             />
         ))}
         </div>
+
     </div>)
 }
 export default Products;

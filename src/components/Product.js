@@ -7,12 +7,11 @@ function Product(props){
 
     return( 
             <div className="column">    
-            <div className="ui card" style={{height:'140px',marginTop:'10px', marginLeft:'10px'}}>
+            <div className="ui card" style={{marginTop:'10px',height:'125px'}}>
                 <div className="content">
-                    <div className="header">{props.id} - {props.name} </div>
-                    <div className="meta">Quantity: {props.qty}</div>
-                    <div className="header">Price: ${props.price} </div>
-                    <button onClick={()=>addItem(props.item)} className="ui button">Add to Cart</button>
+                    <div> <h4>{props.name} </h4> </div>
+                    <div style={{marginTop:'1px',marginBottom:'2px',color:'hotpink'}}> <b> ${props.price} </b> </div>
+                    <button onClick={()=>addItem(props.item)} className="ui mini blue button">Add To Cart</button>
                 </div>
             </div>
             </div>

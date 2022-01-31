@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import {useCart} from "react-use-cart";
 
 function ShoppingCart(props){
@@ -19,7 +18,7 @@ function ShoppingCart(props){
     return(
         <div>
             <h1>Shopping Cart</h1>
-            <p>(Total Unique Items: {totalUniqueItems} , Total Items: {totalItems})</p>
+            <p><b>Total Items: {totalItems}</b></p>
             <table className="ui single line table">
                 <thead>
                     <tr>
